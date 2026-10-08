@@ -37,8 +37,26 @@ type Widened = {
 }[ScalarName];
 const noneWidened: [Widened] extends [never] ? true : false = true;
 
+// A name whose entry is a plain ZodType of its own input and output, such as
+// `z.ZodType<string>` in place of the exact schema type. Must be none too.
+type Loosened = {
+	[N in ScalarName]: z.ZodType<
+		z.output<ScalarSchemas[N]>,
+		z.input<ScalarSchemas[N]>
+	> extends ScalarSchemas[N]
+		? N
+		: never;
+}[ScalarName];
+const noneLoosened: [Loosened] extends [never] ? true : false = true;
+
+// Every name is a literal: a `*Name` annotated `string` would turn the
+// records into index signatures that take any key.
+const namesLiteral: string extends ScalarName ? false : true = true;
+
 test('types each entry exactly, not as z.ZodType', () => {
 	expect(noneWidened).toBe(true);
+	expect(noneLoosened).toBe(true);
+	expect(namesLiteral).toBe(true);
 	const exact: typeof dateTimeSchema = scalarSchemas.DateTime;
 	expect(exact).toBe(dateTimeSchema);
 	const name: ScalarName = 'IBAN';

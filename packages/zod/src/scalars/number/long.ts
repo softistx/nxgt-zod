@@ -2,7 +2,7 @@ import { z } from 'zod';
 import { bigIntegerCodec } from '../../rules/big-integer';
 
 /**
- * A signed 64-bit integer, −2⁶³ to 2⁶³ − 1: a `bigint` in the resolvers, a
+ * A signed 64-bit integer, −2⁶³ to 2⁶³ − 1: a `bigint` once decoded, a
  * decimal string on the wire (a safe-integer number is accepted on the way
  * in).
  */

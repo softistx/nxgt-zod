@@ -28,6 +28,7 @@ packages/zod/
   src/scalars/<category>/<name>.spec.ts   its spec, beside it
   src/scalars/<category>/index.ts         one line per scalar
   src/scalars/registry.spec.ts            the guards below
+  src/scalars/scalar-schemas.spec.ts      the records' exact types
   src/rules/                    helpers shared by several scalars
   test/schema-cases.ts          schemaCases, integerCases, refusal
   docs/guide/scalars/<category>.md        one page per category
@@ -41,17 +42,19 @@ Subpaths: `.` and `./scalars` (both in `exports` and `nxgt.entrypoints`).
 - **One scalar per file, by category, designed for 100+.** A file exports
   exactly two things: `<name>Schema` and `<name>Name`, the GraphQL name
   (`ibanName = 'IBAN'`). Nothing is listed by hand: `scalarSchemas` (keyed by
-  the exact GraphQL name, code-unit order, `HSLA` before `HSL`) is built from
+  the exact GraphQL name, code-unit order of `<Name>Scalar`, as graphql-scalars orders them, so `HSLA` before `HSL`) is built from
   the `*Name` exports, `schemas` (keyed by the export name without `Schema`)
   from the `*Schema` ones, and the types derive from `typeof all`.
   `registry.spec.ts` fails on a file not registered, without a spec, with an
   extra export, not named after its scalar, or without a `## \`<Name>\``
-  section in its category's guide; and `scalar-schemas.spec.ts` fails when an
-  entry widens to `z.ZodType`.
+  section in its category's guide; and `scalar-schemas.spec.ts` fails, at type level, when an
+  entry widens to `z.ZodType` or loosens to a plain `z.ZodType<Out, In>`, or
+  when a `*Name` widens to `string` (the records would take any key).
 - **A new scalar** is a file, its spec, one line in its category's `index.ts`
   and a guide section. A new category is a folder, a line in `all.ts` and a page.
 - **The rules come from `@nxgt/graphql-scalars`** (nxgt-graphql, `develop`,
-  0.4.0) verbatim, comments included, without the GraphQL parts. A rule fixed
+  0.4.0) verbatim, comments included, without the GraphQL parts; a comment
+  that speaks of resolvers is reworded for any consumer. A rule fixed
   there is fixed here and the other way round.
 - **Messages are `Invalid <format>[: hint]`** and never name the value. Numbers
   keep Zod's own bound messages.

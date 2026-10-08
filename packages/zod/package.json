@@ -2,7 +2,7 @@
 	"name": "@nxgt/zod",
 	"version": "0.0.0",
 	"private": true,
-	"description": "Shared Zod 4 building blocks for nxgt: scalar schemas for IBAN, UUID, DateTime, IP and 60 more formats, the rules @nxgt/graphql-scalars applies",
+	"description": "Shared Zod 4 building blocks for nxgt: 65 scalar schemas, such as IBAN, UUID, DateTime and IP, the rules @nxgt/graphql-scalars applies",
 	"license": "MIT",
 	"type": "module",
 	"main": "./dist/index.js",
