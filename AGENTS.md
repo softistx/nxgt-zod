@@ -66,7 +66,12 @@ Subpaths: `.` and `./scalars` (both in `exports` and `nxgt.entrypoints`).
   country nor the length, so `IBAN` adds the SWIFT registry table.
 - **`zod` is a peer**, `>=4.6.5 <5`; `typescript` is a peer, `^6.0.3`. No
   `graphql` dependency, ever.
-- **Imports carry no extension**; consumers resolve as a bundler does.
+- **Source imports carry no extension** (`'./scalars'`, never
+  `'./scalars.js'`). `build.ts` adds the `.js` (or `/index.js`) to the
+  emitted `.d.ts`, so a consumer under `bundler` and one under `nodenext`
+  both resolve them; a failure only under `nodenext` (TS2305) is a bug.
+  `verify:artifacts` emits `packages/zod/test/declarations/zod.ts` under
+  both resolutions, and fails on it.
 
 ## The green bar
 
@@ -117,5 +122,6 @@ Declared divergences from nxgt-data:
 | `.changeset/config.json` | `repo` is `softistx/nxgt-zod` | the repository's name |
 | `.github/actions/setup/action.yml` | no `REDISMS_DISABLE_POSTINSTALL` | no Redis here |
 | `.github/workflows/ci.yml` | no `push` trigger, no cache steps, 15-minute timeout | the `push` and caches exist for service binaries; the specs are pure |
+| `build.ts`, `scripts/artifacts/emit.ts` and `dts-imports.ts`, with their specs | copied from nxgt-graphql (softistx/nxgt-graphql#53), ahead of nxgt-data: the emitted `.d.ts` get `.js` imports, and the fixtures are emitted under `bundler` and `nodenext` | nxgt-data still has the TS2305 bug under `nodenext`; once it takes the fix, this row goes and a sync from nxgt-data is safe again. Until then, never sync these files from nxgt-data |
 | `scripts/verify-artifacts.ts`, `scripts/artifacts/install.ts` | still say `nxgt-data-verify-` and `nxgt-data-artifact-probe` for a temporary directory and probe name | a byte copy; the names are not shown to anyone |
 | `packages/zod/docs/` | no `upgrading.md` | nothing to upgrade from |

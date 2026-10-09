@@ -16,11 +16,24 @@ contains the value.
 
 **When:** type-checking an import of the package.
 **Why:** the package is ESM with an `exports` map, which `moduleResolution`
-`node`/`node10` ignores, and `nodenext` is not supported.
-**Fix:**
+`node`/`node10` ignores.
+**Fix:** `bundler`, or `nodenext` / `node16` from 0.1.2:
 
 ```jsonc
 { "compilerOptions": { "moduleResolution": "bundler" } }
+```
+
+### `TS2305: Module '"@nxgt/zod"' has no exported member 'scalarSchemas'`
+
+**When:** type-checking an import of the package under `moduleResolution`
+`nodenext` or `node16`, with a version before 0.1.2. Every export is
+reported missing, not only `scalarSchemas`.
+**Why:** those versions' declarations re-export `./scalars` without an
+extension, which Node's resolution does not complete.
+**Fix:** upgrade to 0.1.2 or later; until then, use `bundler`.
+
+```sh
+bun add @nxgt/zod@^0.1.2
 ```
 
 ### Two copies of `zod`

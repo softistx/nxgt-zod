@@ -13,9 +13,9 @@ bun add @nxgt/zod zod
 ```
 
 `zod` (`>=4.6.5 <5`) and `typescript` (`^6.0.3`) are peers. The package is ESM
-and its `exports` map needs `"moduleResolution": "bundler"` in your
-`tsconfig.json`; `node`/`node10` ignore the map, and `nodenext` is not
-supported.
+and its `exports` map needs `moduleResolution` set to `bundler`, or to
+`nodenext` / `node16` from 0.1.2, in your `tsconfig.json`; `node`/`node10`
+ignore the map.
 
 ```jsonc
 { "compilerOptions": { "moduleResolution": "bundler" } }

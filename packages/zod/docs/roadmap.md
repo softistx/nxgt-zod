@@ -24,8 +24,6 @@ Nothing queued.
 
 ## Not planned
 
-- **Support for `moduleResolution: "nodenext"`** — the supported setting is
-  `bundler`.
 - **A `Date` that decodes to a JavaScript `Date`** — a calendar date is not an
   instant, and the conversion moves a birthday by a day in some time zones.
 - **A `DateTime` without an offset** — it names no instant.
