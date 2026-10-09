@@ -25,7 +25,7 @@ const wire = z.union(
 );
 
 /**
- * A `bigint` in the resolvers, held to `range`, and a decimal string on the
+ * A `bigint` once decoded, held to `range`, and a decimal string on the
  * wire. A literal past 2⁵³ written as a number is refused, not rounded:
  * write it as a string.
  */

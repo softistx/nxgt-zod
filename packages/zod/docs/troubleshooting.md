@@ -43,7 +43,7 @@ copies in `node_modules` are two sets of classes.
 | --- | --- | --- |
 | `DateTime` | `Invalid ISO datetime` | no offset (`2024-03-10T12:00:00`), an impossible day, or a date alone; add `Z` or `±hh:mm` |
 | `DateTime` | `Invalid input: expected string, received number` | an epoch number; send an RFC 3339 string |
-| `DateTime` | `Invalid DateTime: outside 0000-01-01 to 9999-12-31 in UTC` | an instant before year 0000 or after year 9999 once the offset is applied (`0000-01-01T00:00:00+01:00`); the same message with `cannot serialize this value` for a `Date` outside that range |
+| `DateTime` | `Invalid DateTime: outside 0000-01-01 to 9999-12-31 in UTC` | an instant before year 0000 or after year 9999 once the offset is applied (`0000-01-01T00:00:00+01:00`); the same message from `z.encode` for a `Date` outside that range |
 | `Date` | `Invalid ISO date` | not `YYYY-MM-DD`, or an impossible day such as `2023-02-29`; a date-time is refused |
 | `Time` | `Invalid time: expected HH:MM:SS with an offset` | no offset (`10:15:30`), no seconds (`10:15Z`), a lower-case `z`, hour 24 or second 60; send `10:15:30Z` or `10:15:30+02:00` |
 | several | `Invalid offset: write no offset as +00:00` | `DateTime`, `Time` or `UtcOffset` given the offset `-00:00` (RFC 3339's "local offset unknown"); send `Z` or `+00:00` |

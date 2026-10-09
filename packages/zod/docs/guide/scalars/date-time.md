@@ -178,8 +178,7 @@ utcOffsetSchema.parse('+14:30');
 
 ## `TimeZone`
 
-Schema `timeZoneSchema`, `specifiedByURL`
-`https://www.iana.org/time-zones`. A string on both sides. Accepts
+Schema `timeZoneSchema`, specified by <https://www.iana.org/time-zones>. A string on both sides. Accepts
 `Europe/Paris`, `UTC`, and aliases such as `US/Pacific`; refuses `europe/paris`,
 `Europe/PARIS`, `+05:30` and `Mars/Base`.
 

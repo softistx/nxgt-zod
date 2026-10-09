@@ -4,7 +4,7 @@ Shared Zod 4 building blocks for nxgt, in one Bun workspace.
 
 | Package | |
 | --- | --- |
-| [`@nxgt/zod`](packages/zod) | the scalar schemas (IBAN, UUID, DateTime, IP, Long, JSON and 60 more), the exact rules `@nxgt/graphql-scalars` applies, for an app that validates without `graphql`. Later: an error map, user-friendly messages and i18n. Not published yet |
+| [`@nxgt/zod`](packages/zod) | 65 scalar schemas (IBAN, UUID, DateTime, IP, Long, JSON…), the exact rules `@nxgt/graphql-scalars` applies, for an app that validates without `graphql`. Later: an error map, user-friendly messages and i18n. Not published yet |
 
 Each package's README is its npm page.
 

@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 /**
- * A `Date` in the resolvers, an invalid one (`new Date(NaN)`) refused with
+ * A `Date` once decoded, an invalid one (`new Date(NaN)`) refused with
  * its own message: Zod's is "expected date, received Date".
  */
 export function validDate() {

@@ -25,7 +25,7 @@ function withMilliseconds(text: string): string {
 
 /**
  * An RFC 3339 date-time with its offset (`Z` or `±hh:mm`) on the wire, a
- * `Date` in the resolvers. A time with no offset is refused: it names no
+ * `Date` once decoded. A time with no offset is refused: it names no
  * instant; so is `-00:00`, which RFC 3339 keeps for an unknown offset. A
  * fraction past milliseconds is cut, not rounded. Both ways the instant is
  * from 0000-01-01 to 9999-12-31 in UTC, what `toISOString()` writes as

@@ -2,7 +2,7 @@ import { z } from 'zod';
 import { bigIntegerCodec } from '../../rules/big-integer';
 
 /**
- * An integer of any size: a `bigint` in the resolvers, a decimal string on
+ * An integer of any size: a `bigint` once decoded, a decimal string on
  * the wire (a safe-integer number is accepted on the way in).
  */
 export const bigIntSchema = bigIntegerCodec(z.bigint());

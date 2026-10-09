@@ -7,7 +7,7 @@ const LIMIT = 8.64e15;
 
 /**
  * An instant as milliseconds since 1970-01-01T00:00:00Z on the wire (an
- * integer, negative before 1970), a `Date` in the resolvers. Past 2³¹, so
+ * integer, negative before 1970), a `Date` once decoded. Past 2³¹, so
  * not GraphQL's `Int`. An invalid `Date` is refused on the way out.
  */
 export const timestampSchema = z.codec(
