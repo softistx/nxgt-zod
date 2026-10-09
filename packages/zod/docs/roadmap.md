@@ -30,6 +30,11 @@ Nothing queued.
 
 ## Shipped
 
+### 0.1.2
+
+- **Declarations resolve under `nodenext`** — `moduleResolution` `nodenext` and
+  `node16` find every export, as `bundler` does.
+
 ### 0.1.0
 
 - **The scalar schemas** — 65 schemas with the rules of
