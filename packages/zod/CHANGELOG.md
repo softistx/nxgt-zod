@@ -1,5 +1,11 @@
 # @nxgt/zod
 
+## 0.1.2
+
+### Patch Changes
+
+- [#6](https://github.com/softistx/nxgt-zod/pull/6) [`adcb6a1`](https://github.com/softistx/nxgt-zod/commit/adcb6a1710c7fd6d1879ab146c94d02fa126e99b) Thanks [@SteveGT96](https://github.com/SteveGT96)! - The declaration files now import each other with a `.js` extension, so a project with `moduleResolution: "nodenext"` (or `node16`) sees every export: `import { scalarSchemas } from '@nxgt/zod'` failed there with TS2305.
+
 ## 0.1.1
 
 ### Patch Changes
