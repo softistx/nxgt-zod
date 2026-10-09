@@ -6,9 +6,7 @@ candidates, not promises.
 
 ## Now
 
-- **The first release: the scalar schemas** — 65 schemas with the rules of
-  `@nxgt/graphql-scalars`, `scalarSchemas` keyed by GraphQL name, and
-  `schemas`. Held back until the owner approves the first publish.
+Nothing queued.
 
 ## Next
 
@@ -34,4 +32,8 @@ Nothing queued.
 
 ## Shipped
 
-Nothing yet.
+### 0.1.0
+
+- **The scalar schemas** — 65 schemas with the rules of
+  `@nxgt/graphql-scalars`, `scalarSchemas` keyed by GraphQL name, and
+  `schemas`.
