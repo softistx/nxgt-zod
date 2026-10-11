@@ -1,5 +1,11 @@
 # @nxgt/zod
 
+## 0.1.3
+
+### Patch Changes
+
+- [#10](https://github.com/softistx/nxgt-zod/pull/10) [`099b311`](https://github.com/softistx/nxgt-zod/commit/099b311f22eae354f4fc1c044a5ab0712ab931d4) Thanks [@SteveGT96](https://github.com/SteveGT96)! - Accept TypeScript 7 as a peer: `typescript` is now `^6.0.3 || ^7.0.0`.
+
 ## 0.1.2
 
 ### Patch Changes
