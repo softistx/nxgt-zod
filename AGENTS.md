@@ -64,7 +64,7 @@ Subpaths: `.` and `./scalars` (both in `exports` and `nxgt.entrypoints`).
   caches are built lazily; `Emoji` creates its `Intl.Segmenter` on first use,
   so a runtime without it fails `Emoji` alone; `z.iban()` checks neither the
   country nor the length, so `IBAN` adds the SWIFT registry table.
-- **`zod` is a peer**, `>=4.6.5 <5`; `typescript` is a peer, `^6.0.3`. No
+- **`zod` is a peer**, `>=4.6.5 <5`; `typescript` is a peer, `^6.0.3 || ^7.0.0`. No
   `graphql` dependency, ever.
 - **Source imports carry no extension** (`'./scalars'`, never
   `'./scalars.js'`). `build.ts` adds the `.js` (or `/index.js`) to the
