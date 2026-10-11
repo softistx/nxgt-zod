@@ -60,7 +60,7 @@ jobs:
   newest-peers:
     # The job above runs the lockfile's toolchain: the exact zod each package
     # pins as a devDependency, the oldest end of its peer range. This one runs
-    # the newest end — the latest zod 4 and TypeScript within `^6.0.3` — so a
+    # the newest end — the latest zod 4 and TypeScript within the peer range — so a
     # range stays true after the release that would break it. It resolves
     # without a lockfile, so an upstream release can turn it red with no
     # change here: read it, do not make it a required check.
