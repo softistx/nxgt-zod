@@ -9,6 +9,7 @@ contains the value.
 - [Parsing](#parsing)
 - [Encoding](#encoding)
 - [Runtimes](#runtimes)
+- [Content Security Policy](#content-security-policy)
 
 ## Install
 
@@ -237,3 +238,25 @@ canonical. The caches behind both are built on first use.
 for a tag) and run the same engine in the server and the tests. See
 [Locale schemas](guide/scalars/locale.md) and [Date and time
 schemas](guide/scalars/date-time.md).
+
+## Content Security Policy
+
+### `Refused to evaluate a string as JavaScript because 'unsafe-eval' is not an allowed source`
+
+**When:** a page served with a CSP that lacks `'unsafe-eval'` loads Zod; the
+browser console shows this message and a `securitypolicyviolation` event fires
+(and is reported to your `report-uri`), once on each page load.
+**Why:** Zod tries `new Function` when it builds its first object schema, to
+compile a faster parser. The CSP refuses it, Zod falls back and everything
+still works, but the browser reports the refusal.
+**Fix:** run `ZOD_JITLESS` in an inline script that carries the page's nonce,
+before any module script, so Zod never makes the attempt:
+
+```tsx
+import { ZOD_JITLESS } from '@nxgt/zod/csp';
+
+<script nonce={nonce} dangerouslySetInnerHTML={{ __html: ZOD_JITLESS }} />;
+```
+
+The nonce must be in your `script-src`. See [Pages under a strict
+CSP](guide/csp.md).

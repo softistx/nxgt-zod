@@ -40,11 +40,11 @@ const User = z.object({ iban: ibanSchema, since: dateTimeSchema });
 scalarSchemas.IBAN === ibanSchema; // true
 ```
 
-Both entry points give the same names for now:
+The package has three entry points; the root re-exports the other two:
 
 | Import | Holds |
 | --- | --- |
-| `@nxgt/zod` | everything below, re-exported |
+| `@nxgt/zod` | everything in the two rows below |
 | `@nxgt/zod/scalars` | every scalar schema, `scalarSchemas`, `schemas`, `ScalarName` |
 | `@nxgt/zod/csp` | `ZOD_JITLESS`, the boot snippet for strict-CSP pages (also in the root) |
 
@@ -75,7 +75,16 @@ nonce, before any module; every copy of Zod then runs in `jitless` mode. See
 ```tsx
 import { ZOD_JITLESS } from '@nxgt/zod/csp';
 
-<script nonce={nonce} dangerouslySetInnerHTML={{ __html: ZOD_JITLESS }} />;
+// `nonce` is the per-request value your server also puts in the
+// Content-Security-Policy header's `script-src`.
+export function Head({ nonce }: { nonce: string }) {
+	return (
+		<head>
+			<script nonce={nonce} dangerouslySetInnerHTML={{ __html: ZOD_JITLESS }} />
+			{/* module scripts after */}
+		</head>
+	);
+}
 ```
 
 ## Schemas by category
