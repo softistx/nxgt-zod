@@ -46,6 +46,7 @@ Both entry points give the same names for now:
 | --- | --- |
 | `@nxgt/zod` | everything below, re-exported |
 | `@nxgt/zod/scalars` | every scalar schema, `scalarSchemas`, `schemas`, `ScalarName` |
+| `@nxgt/zod/csp` | `ZOD_JITLESS`, the boot snippet for strict-CSP pages (also in the root) |
 
 ## What it exports
 
@@ -63,6 +64,19 @@ Four schemas are codecs: `dateTimeSchema` and `timestampSchema` decode to a
 `Date`, `longSchema` and `bigIntSchema` to a `bigint`; use `z.decode` and
 `z.encode` for the other direction. Read [the guide](docs/guide/scalars.md)
 for the rules they share.
+
+## Pages under a strict CSP
+
+A CSP without `'unsafe-eval'` makes Zod's `new Function` attempt a reported
+violation on every page. Put `ZOD_JITLESS` in an inline script with the page's
+nonce, before any module; every copy of Zod then runs in `jitless` mode. See
+[the guide](docs/guide/csp.md).
+
+```tsx
+import { ZOD_JITLESS } from '@nxgt/zod/csp';
+
+<script nonce={nonce} dangerouslySetInnerHTML={{ __html: ZOD_JITLESS }} />;
+```
 
 ## Schemas by category
 

@@ -28,12 +28,13 @@ packages/zod/
   src/scalars/registry.spec.ts            the guards below
   src/scalars/scalar-schemas.spec.ts      the records' exact types
   src/rules/                    helpers shared by several scalars
+  src/csp/jitless.ts            ZOD_JITLESS, the boot snippet; jitless.spec.ts runs it in a fresh process
   test/schema-cases.ts          schemaCases, integerCases, refusal
   docs/guide/scalars/<category>.md        one page per category
 ```
 
-Subpaths: `.` and `./scalars` (both in `exports` and `nxgt.entrypoints`).
-`.` re-exports `./scalars` for now.
+Subpaths: `.`, `./scalars` and `./csp` (all in `exports` and `nxgt.entrypoints`).
+`.` re-exports `./scalars` and `./csp` for now.
 
 ## Invariants
 
