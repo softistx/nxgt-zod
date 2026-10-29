@@ -30,6 +30,13 @@ Nothing queued.
 
 ## Shipped
 
+### 0.2.0
+
+- **`ZOD_JITLESS` for pages under a strict CSP** — an inline boot snippet,
+  exported from `@nxgt/zod/csp` and the root, that turns Zod's `jitless` mode
+  on for every copy of Zod on the page, so no `unsafe-eval` violation is
+  reported.
+
 ### 0.1.2
 
 - **Declarations resolve under `nodenext`** — `moduleResolution` `nodenext` and

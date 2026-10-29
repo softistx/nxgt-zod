@@ -24,6 +24,11 @@
 			"import": "./dist/scalars/index.js",
 			"default": "./dist/scalars/index.js"
 		},
+		"./csp": {
+			"types": "./dist/csp/index.d.ts",
+			"import": "./dist/csp/index.js",
+			"default": "./dist/csp/index.js"
+		},
 		"./package.json": "./package.json"
 	},
 	"keywords": [
@@ -53,7 +58,8 @@
 	"nxgt": {
 		"entrypoints": [
 			"src/index.ts",
-			"src/scalars/index.ts"
+			"src/scalars/index.ts",
+			"src/csp/index.ts"
 		]
 	},
 	"devDependencies": {
