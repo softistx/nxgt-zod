@@ -1,5 +1,11 @@
 # @nxgt/zod
 
+## 0.2.0
+
+### Minor Changes
+
+- [#16](https://github.com/softistx/nxgt-zod/pull/16) [`c5e26e3`](https://github.com/softistx/nxgt-zod/commit/c5e26e3e0cbb72dc49aee71211b16b590d13a8a7) Thanks [@SteveGT96](https://github.com/SteveGT96)! - Export `ZOD_JITLESS` (from `@nxgt/zod/csp` and the root), the inline boot snippet that turns Zod's `jitless` mode on for every copy of Zod on a page under a CSP without `'unsafe-eval'`.
+
 ## 0.1.3
 
 ### Patch Changes
